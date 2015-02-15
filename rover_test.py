@@ -1,16 +1,14 @@
-from rover import Rover
+from rover import Rover, Position, Direction
 import unittest
 
 class RoverTests(unittest.TestCase):
 
-#position has a default x, y
-    def test_position_default_coordinates(self):
-        pass
-#rover can be given coords upon instantiation
-    def test_rover_given_coordinates(self):
-        pass
     def test_move_one_forward(self):
-        pass
+        rover = Rover(Position(0, 0), Direction.S)
+        rover.move(('f',))
+        self.assertEqual(Position(-1, 0), rover.get_position())
+
+
 if __name__ == '__main__':
     unittest.main()
 
