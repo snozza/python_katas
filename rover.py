@@ -12,6 +12,8 @@ class Rover():
                 self.direction.backward(self.position)
             elif cmd == 'l':
                 self.direction = self.direction.turn_left()
+            elif cmd == 'r':
+                self.direction = self.direction.turn_right()
 
     def get_position(self):
         return self.position
@@ -75,6 +77,9 @@ class SouthDirection():
 
     def backward(self, position):
         return position.up()
+
+    def turn_right(self):
+        return Direction.W
 
 class Direction():
     S = SouthDirection()
