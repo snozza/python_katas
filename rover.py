@@ -5,7 +5,11 @@ class Rover():
         self.direction = direction
 
     def move(self, commands):
-        self.position.down()
+        for cmd in commands:
+            if cmd == 'f':
+                self.position.down()
+            else:
+                self.position.up()
 
     def get_position(self):
         return self.position
@@ -33,6 +37,9 @@ class Position():
 
     def down(self):
         self.x -= 1
+
+    def up(self):
+        self.x += 1
 
 class Direction():
     S = 'south'
