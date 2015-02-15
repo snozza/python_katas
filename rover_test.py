@@ -34,6 +34,16 @@ class RoverTests(unittest.TestCase):
         rover.move(('f', 'f', 'f', 'b', 'b', 'b', 'b'))
         self.assertEqual((-1, 0), rover.get_position())
 
+    def test_move_five_forward_east(self):
+        rover = Rover(Position(0, 0), 'east')
+        rover.move(('f', 'f', 'f', 'f', 'f'))
+        self.assertEqual((0, 5), rover.get_position())
+
+    def test_move_two_backwards_west(self):
+        rover = Rover(Position(0, 0), 'west')
+        rover.move(('b', 'b'))
+        self.assertEqual((0, 2), rover.get_position())
+
 if __name__ == '__main__':
     unittest.main()
 

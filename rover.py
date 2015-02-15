@@ -14,6 +14,14 @@ class Rover:
                 self.position.up()
             if cmd == 'b' and self.direction == 'north':
                 self.position.down()
+            if cmd == 'f' and self.direction == 'east':
+                self.position.right()
+            if cmd == 'b' and self.direction == 'east':
+                self.position.left()
+            if cmd == 'f' and self.direction == 'west':
+                self.position.left()
+            if cmd == 'b' and self.direction == 'west':
+                self.position.right()
 
     def get_position(self):
         return self.position.get_position()
@@ -29,6 +37,12 @@ class Position:
 
     def up(self):
         self.x += 1
+
+    def right(self):
+        self.y += 1
+
+    def left(self):
+        self.y -= 1
 
     def get_position(self):
         return (self.x, self.y)
