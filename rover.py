@@ -10,6 +10,10 @@ class Rover:
                 self.position.down()
             if cmd == 'b' and self.direction == 'south':
                 self.position.up()
+            if cmd == 'f' and self.direction == 'north':
+                self.position.up()
+            if cmd == 'b' and self.direction == 'north':
+                self.position.down()
 
     def get_position(self):
         return self.position.get_position()
