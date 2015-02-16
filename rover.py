@@ -50,7 +50,10 @@ class Position():
         self.x -= 1
 
     def up(self):
-        self.x += 1
+        if self.is_finite_grid() and self.x+1 > self.grid_size[0]:
+            self.x = 0-self.grid_size[0]
+        else:
+            self.x += 1
 
     def left(self):
         if self.is_finite_grid() and self.y-1 < self.grid_size[1] * -1:
