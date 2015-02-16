@@ -56,10 +56,15 @@ class RoverTests(unittest.TestCase):
         rover.move(('f', 'f'))
         self.assertEqual(Position(10, 8), rover.get_position())
 
-    def test_move_east_on_finite_grid_with_wrapping(self):
+    def test_wrapping_right_edge(self):
         rover = Rover(Position(10, 10), Direction.E, (10, 10))
         rover.move(('f', 'f', 'f'))
         self.assertEqual(Position(10, -8), rover.get_position())
+
+    def test_wrapping_left_edge(self):
+        rover = Rover(Position(20, -30), Direction.W, (30, 30))
+        rover.move(('f', 'f'))
+        self.assertEqual(Position(20, 29), rover.get_position())
 
     def _move_and_test_rover(self, position, direction, movement, expected_position):
         rover = Rover(position, direction)
