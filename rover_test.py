@@ -51,6 +51,11 @@ class RoverTests(unittest.TestCase):
                 ('f', 'b', 'b', 'l', 'l', 'f', 'f'),
                 Position(3, 0))
 
+    def test_move_west_on_finite_grid(self):
+        rover = Rover(Position(10, 10), Direction.W, (20, 20))
+        rover.move(('f', 'f'))
+        self.assertEqual(Position(10, 8), rover.get_position())
+
     def _move_and_test_rover(self, position, direction, movement, expected_position):
         rover = Rover(position, direction)
         rover.move(movement)
