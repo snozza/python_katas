@@ -62,6 +62,9 @@ class NorthDirection():
     def turn_left(self):
         return Direction.W
 
+    def turn_right(self):
+        return Direction.E
+
 class WestDirection():
 
     def forward(self, position):
@@ -69,6 +72,26 @@ class WestDirection():
 
     def backward(self, position):
         return position.right()
+
+    def turn_right(self):
+        return Direction.N
+
+    def turn_left(self):
+        return Direction.S
+
+class EastDirection():
+
+    def forward(self, position):
+        return position.right()
+
+    def backward(self, position):
+        return position.left()
+
+    def turn_right(self):
+        return Direction.S
+
+    def turn_left(self):
+        return Direction.N
 
 class SouthDirection():
 
@@ -81,7 +104,11 @@ class SouthDirection():
     def turn_right(self):
         return Direction.W
 
+    def turn_left(self):
+        return Direction.E
+
 class Direction():
     S = SouthDirection()
     N = NorthDirection()
     W = WestDirection()
+    E = EastDirection()

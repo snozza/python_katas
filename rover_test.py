@@ -21,22 +21,40 @@ class RoverTests(unittest.TestCase):
                 ('f', 'b', 'b'),
                 Position(-1, 0))
 
-    def test_move_one_forward_two_backward_turn_left(self):
+    def test_move_one_forward_two_backward_turn_left_north(self):
         self._move_and_test_rover(Position(0, 0),
                 Direction.N,
                 ('f', 'b', 'b', 'l', 'f'),
                 Position(-1, -1))
 
-    def test_move_one_forward_two_backward_turn_right(self):
+    def test_move_one_forward_two_backward_turn_right_south(self):
         self._move_and_test_rover(Position(0, 0),
-            Direction.S,
-            ('f', 'b', 'b', 'r', 'f'),
-            Position(1, -1))
+                Direction.S,
+                ('f', 'b', 'b', 'r', 'f'),
+                Position(1, -1))
+
+    def test_move_one_forward_two_backward_turn_left_south(self):
+        self._move_and_test_rover(Position(0,0),
+                Direction.S,
+                ('f', 'b', 'b', 'l', 'f', 'f'),
+                Position(1, 2))
+
+    def test_move_one_forward_two_backward_turn_right_west(self):
+        self._move_and_test_rover(Position(0,0),
+                Direction.S,
+                ('f', 'b', 'b', 'r', 'f', 'f'),
+                Position(1, -2))
+
+    def test_move_one_forward_two_backward_turn_left_east(self):
+        self._move_and_test_rover(Position(0, 0),
+                Direction.S,
+                ('f', 'b', 'b', 'l', 'f', 'f'),
+                Position(1, 2))
 
     def _move_and_test_rover(self, position, direction, movement, expected_position):
         rover = Rover(position, direction)
         rover.move(movement)
-        self.assertEquals(expected_position, rover.get_position())
+        self.assertEqual(expected_position, rover.get_position())
 
 
 if __name__ == '__main__':
